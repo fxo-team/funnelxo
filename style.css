@@ -287,37 +287,4 @@ button:hover {
   }
 }
 
-/* Specific Mobile Alignment Fix */
-@media (max-width: 768px) {
-  /* This centers the grid items (the cards) themselves */
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr; 
-    justify-items: center; 
-    gap: 20px;
-  }
 
-  /* This ensures the content inside the cards is centered */
-  .card {
-    width: 90%; /* Prevents card from touching screen edges */
-    margin: 0 auto;
-    text-align: center;
-    align-items: center;
-  }
-
-  /* Tighten up header for mobile */
-  header {
-    padding: 0 20px;
-    justify-content: center;
-  }
-
-  nav {
-    display: none;
-  }
-
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 20px;
-  }
-}
