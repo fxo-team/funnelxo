@@ -287,22 +287,3 @@ button:hover {
   }
 }
 
-@media (max-width: 768px) {
-
-  .what-we-do {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .what-we-do .cards {
-    justify-content: center;
-    align-items: center;
-  }
-
-  .what-we-do .card {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-}
