@@ -22,25 +22,24 @@ function scrollToSection(id) {
 
 const menuToggle = document.getElementById('mobile-menu');
 const navMenu = document.getElementById('nav-menu');
-const body = document.body;
 
 menuToggle.addEventListener('click', () => {
+  const isActive = navMenu.classList.toggle('active');
   menuToggle.classList.toggle('active');
-  navMenu.classList.toggle('active');
-  
-  // Prevent background scrolling when menu is open
-  if (navMenu.classList.contains('active')) {
-    body.style.overflow = 'hidden';
+
+  if (isActive) {
+    // Prevent the background from moving while menu is open
+    document.body.style.overflow = 'hidden';
   } else {
-    body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
   }
 });
 
-// Close menu when a link is clicked
-document.querySelectorAll('nav a').forEach(link => {
+// Close menu and restore scroll when a link is clicked
+document.querySelectorAll('#nav-menu a').forEach(link => {
   link.addEventListener('click', () => {
     menuToggle.classList.remove('active');
     navMenu.classList.remove('active');
-    body.style.overflow = 'auto'; // Re-enable scrolling
+    document.body.style.overflow = 'auto';
   });
 });
