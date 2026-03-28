@@ -304,64 +304,77 @@ button:hover {
 }
 
 
-/* This prevents the "Right Side" gap and zoom-out issue */
+/* --- KILL THE RIGHT-SIDE SLIDING (Add this to the very top of your CSS) --- */
 html, body {
   overflow-x: hidden;
   width: 100%;
+  margin: 0;
+  padding: 0;
   position: relative;
 }
-/* MOBILE RESPONSIVE LOGIC - THE ACTUAL FIX */
-@media (max-width: 768px) {
-  /* 1. Force the page to stay within the screen width */
-  html, body {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-  }
 
+/* --- RE-STRUCTURED MOBILE MENU (Replace your existing @media 768px block) --- */
+@media (max-width: 768px) {
   header {
-    justify-content: space-between;
     padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
   }
 
+  /* Make the hamburger button visible */
   .menu-toggle {
     display: flex !important;
-    z-index: 1001;
+    z-index: 1100; /* Ensure it stays above the menu */
     position: relative;
   }
 
-  /* 2. The Nav Overlay - FIXED VERSION */
+  /* THE FIX: Remove right: -100% and use display: none */
   nav {
-    display: none !important; /* CRITICAL: This stops the zoom-out issue */
+    display: none !important; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
     position: fixed; 
     top: 0;
-    left: 0; /* Changed to left so it centers correctly when shown */
+    left: 0;
     
     width: 100vw;
     height: 100vh;
-    background: #0f172a; /* Deep midnight blue */
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background: #0f172a; /* Solid background */
+    z-index: 1050;
+    margin: 0;
   }
 
-  /* 3. Reveal the menu ONLY when active */
+  /* This class is added by JavaScript when you click the button */
   nav.active {
-    display: flex !important; /* Only exists when button is clicked */
-    opacity: 1;
+    display: flex !important;
   }
 
   nav a {
-    margin: 15px 0 !important;
+    margin: 20px 0 !important;
     font-size: 28px !important;
     color: white !important;
-    text-decoration: none;
+  }
+
+  /* Stack Hero elements on mobile */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  /* Force the grids to 1 column */
+  #system .grid, .grid {
+    grid-template-columns: 1fr !important;
   }
 
   /* Hamburger to 'X' animation */
