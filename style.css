@@ -287,4 +287,57 @@ button:hover {
   }
 }
 
+/* HAMBURGER STYLES */
+.menu-toggle {
+  display: none; /* Hidden by default (Desktop) */
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
 
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* MOBILE RESPONSIVE LOGIC */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex; /* Show 3-line icon on mobile */
+    z-index: 1001;
+  }
+
+  nav {
+    display: flex; /* Changed from 'none' to 'flex' */
+    flex-direction: column;
+    position: fixed;
+    top: 80px; /* Right under the header */
+    right: -100%; /* Hide it off-screen to the right */
+    background: rgba(15, 23, 42, 0.98);
+    width: 100%;
+    height: calc(100vh - 80px);
+    text-align: center;
+    transition: 0.4s;
+    padding-top: 50px;
+    z-index: 1000;
+  }
+
+  /* When the menu is active, slide it in */
+  nav.active {
+    right: 0;
+  }
+
+  nav a {
+    margin: 15px 0;
+    font-size: 20px;
+    display: block;
+  }
+
+  /* Optional: Turn 3 lines into an 'X' when open */
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+}
