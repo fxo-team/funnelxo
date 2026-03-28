@@ -17,38 +17,32 @@ header {
   align-items: center;
   padding: 0 40px;
   height: 80px;
-  background: rgba(15, 23, 42, 0.95); /* Semi-transparent dark blue */
-  backdrop-filter: blur(10px);        /* This gives it that modern glass look */
+  background: #0f172a; /* Use a solid color first to test visibility */
+  backdrop-filter: blur(10px);
   
-  /* THIS PART MAKES IT STICKY */
-  position: fixed; /* Changed from sticky to fixed for better mobile support */
+  /* STICKY FIXES */
+  position: fixed; 
   top: 0;
   left: 0;
+  right: 0; /* Ensures it stretches to both edges */
   width: 100%;
-  z-index: 2000; /* High number to stay above EVERYTHING else */
+  z-index: 9999; /* Boosted this to ensure it's the highest element */
   
   box-sizing: border-box;
-  border-bottom: 1px solid rgba(168, 85, 247, 0.2); /* Subtle line for detail */
-}
-
-/* Because the header is now 'fixed', we need to push the hero section down 
-   so the header doesn't cover your title 'Turning Conversation...' */
-body {
-  padding-top: 80px; 
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 .logo img {
-  height: 60px; /* Scaled down from 160px for better header fit */
+  height: 50px; 
   width: auto;
-  display: block;
+  position: relative; /* Adds an extra layer of visibility insurance */
+  z-index: 10001;
 }
 
-nav a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #cbd5f5;
-  font-weight: 500;
-  transition: 0.3s;
+nav {
+  display: flex;
+  align-items: center;
+  z-index: 10001;
 }
 
 nav a:hover {
