@@ -12,41 +12,49 @@ html, body {
 }
 
 header {
+  /* LAYOUT - Matches your screenshot */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px;
+  padding: 0 60px; /* Adjust this to match your hero section's side padding */
   height: 80px;
-  background: #0f172a; /* Use a solid color first to test visibility */
-  backdrop-filter: blur(10px);
   
-  /* STICKY FIXES */
-  position: fixed; 
+  /* STICKY BEHAVIOR */
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0; /* Ensures it stretches to both edges */
   width: 100%;
-  z-index: 9999; /* Boosted this to ensure it's the highest element */
+  z-index: 9999; /* Ensures it stays on top of the funnel image */
   
-  box-sizing: border-box;
+  /* VISUALS */
+  background: rgba(15, 23, 42, 0.95); /* Deep dark blue with slight transparency */
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  box-sizing: border-box;
 }
 
 .logo img {
-  height: 50px; 
+  height: 50px; /* Keeps logo at the professional size seen in your shot */
   width: auto;
-  position: relative; /* Adds an extra layer of visibility insurance */
-  z-index: 10001;
+  display: block;
 }
 
 nav {
   display: flex;
-  align-items: center;
-  z-index: 10001;
+  gap: 30px; /* Space between Home, Services, Pricing, etc. */
 }
 
-nav a:hover {
-  color: #a855f7;
+nav a {
+  text-decoration: none;
+  color: #cbd5f5;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+/* IMPORTANT: Push the rest of the site down so the header doesn't cover the title */
+body {
+  padding-top: 80px; 
 }
 
 /* --- 3. HERO SECTION --- */
