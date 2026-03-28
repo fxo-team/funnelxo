@@ -303,41 +303,43 @@ button:hover {
   transition: 0.3s;
 }
 
-/* MOBILE RESPONSIVE LOGIC */
+/* MOBILE RESPONSIVE LOGIC - FIX */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: flex; /* Show 3-line icon on mobile */
-    z-index: 1001;
+    display: flex; 
+    z-index: 1001; /* Stay above the menu */
   }
 
   nav {
-    display: flex; /* Changed from 'none' to 'flex' */
+    display: flex;
     flex-direction: column;
-    position: fixed;
-    top: 80px; /* Right under the header */
-    right: -100%; /* Hide it off-screen to the right */
-    background: rgba(15, 23, 42, 0.98);
-    width: 100%;
-    height: calc(100vh - 80px);
+    position: fixed; /* Fixes it to the screen, not the page flow */
+    top: 0; 
+    right: -100%; /* Hide completely off-screen */
+    background: #0f172a; /* Solid dark background */
+    width: 100%; /* Take up the whole screen width */
+    height: 100vh; /* Take up the whole screen height */
     text-align: center;
-    transition: 0.4s;
-    padding-top: 50px;
-    z-index: 1000;
+    transition: 0.4s ease-in-out;
+    padding-top: 100px; /* Space for the links to start lower */
+    z-index: 1000; /* Sit on top of everything else */
   }
 
-  /* When the menu is active, slide it in */
+  /* When the menu is active, slide it in from the right */
   nav.active {
     right: 0;
   }
 
   nav a {
-    margin: 15px 0;
-    font-size: 20px;
+    margin: 20px 0;
+    font-size: 24px;
     display: block;
+    color: white;
+    text-decoration: none;
   }
-
-  /* Optional: Turn 3 lines into an 'X' when open */
-  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  
+  /* The 3 lines turning into an X */
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
   .menu-toggle.active span:nth-child(2) { opacity: 0; }
-  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 }
