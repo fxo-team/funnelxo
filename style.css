@@ -33,29 +33,17 @@ header {
 }
 
 .logo img {
-
-  height: 60px; /* Scaled down from 160px for better header fit */
-
+  height: 160px; /* Adjusted for better balance */
   width: auto;
-
   display: block;
-
 }
 
-
-
 nav a {
-
   margin-left: 25px;
-
   text-decoration: none;
-
   color: #cbd5f5;
-
   font-weight: 500;
-
   transition: 0.3s;
-
 }
 
 nav a:hover {
