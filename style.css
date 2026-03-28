@@ -1,14 +1,17 @@
-/* GLOBAL STYLES */
-body {
+/* --- 1. CORE RESET & LAYOUT FIXES --- */
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevents horizontal scrolling/sliding */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #1e1b4b;
   color: white;
   line-height: 1.6;
-  overflow-x: hidden;
+  position: relative;
 }
 
-/* HEADER - Clean & Seamless */
+/* --- 2. HEADER & NAVIGATION --- */
 header {
   display: flex;
   justify-content: space-between;
@@ -20,10 +23,11 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 .logo img {
-  height: 160px; /* Adjusted for better balance */
+  height: 60px; /* Scaled down from 160px for better header fit */
   width: auto;
   display: block;
 }
@@ -40,13 +44,15 @@ nav a:hover {
   color: #a855f7;
 }
 
-/* HERO SECTION - Tightened Spacing */
+/* --- 3. HERO SECTION --- */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 90px 10px 60px; /* Very tight bottom padding */
+  padding: 60px 60px 20px 60px;
   gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-text h1 {
@@ -66,9 +72,10 @@ nav a:hover {
   width: 100%;
   max-width: 500px;
   height: auto;
+  border-radius: 20px;
 }
 
-/* BUTTONS */
+/* --- 4. BUTTONS --- */
 button {
   padding: 14px 30px;
   font-size: 16px;
@@ -86,35 +93,31 @@ button:hover {
   box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
 }
 
-/* SECTIONS - Tightened Top Spacing */
+/* --- 5. GRID & CARDS --- */
 .section {
-  padding: 20px 60px 60px 60px; /* Reduced top padding to pull content up */
+  padding: 60px 40px;
   text-align: center;
 }
 
 .section h2 {
   font-size: 32px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.dark {
-  background: #1e1b4b;
-}
-
-/* GRID SYSTEM */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
   margin-top: 30px;
+  justify-content: center;
+  justify-items: center; /* Centers cards on mobile */
 }
 
-/* FORCED 3-COLUMN GRID FOR SYSTEM */
+/* Specific 3-column layout for Desktop System section */
 #system .grid {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* CARDS */
 .card {
   background: #1e293b;
   padding: 30px;
@@ -123,6 +126,8 @@ button:hover {
   border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card:hover {
@@ -140,14 +145,16 @@ button:hover {
   border: 2px solid #a855f7;
 }
 
-/* CONTACT SECTION ONLY - The "Get Started" Area */
-#contact.dark {
-  background: #0f172a; /* Deep midnight blue only for this section */
-  border-top: 1px solid rgba(168, 85, 247, 0.1);
-  padding: 80px 60px;
+.dark {
+  background: #1e1b4b;
 }
 
-/* CONTACT FORM CONTAINER */
+/* --- 6. CONTACT FORM --- */
+#contact.dark {
+  background: #0f172a;
+  border-top: 1px solid rgba(168, 85, 247, 0.1);
+}
+
 .contact-container {
   max-width: 600px;
   margin: 30px auto;
@@ -170,13 +177,12 @@ button:hover {
   width: 100%;
 }
 
-/* INPUTS, SELECTS & TEXTAREA inside the contact form */
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
   width: 100%;
   padding: 14px 18px;
-  background: #020617; /* High-contrast dark fields */
+  background: #020617;
   border: 1px solid #334155;
   color: white;
   border-radius: 12px;
@@ -191,46 +197,9 @@ button:hover {
 .contact-form textarea:focus {
   outline: none;
   border-color: #a855f7;
-  background: #0f172a;
+  background: #161e2d;
 }
 
-.contact-form button {
-  margin-top: 10px;
-  width: 100%;
-  border-radius: 12px;
-  padding: 16px;
-  font-size: 18px;
-}
-
-/* Specific fix for input group children to be exactly 50/50 */
-.input-group input {
-  flex: 1;
-}
-
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #a855f7;
-  background: #161e2d; /* Subtle change on focus */
-}
-
-.contact-form button {
-  margin-top: 10px;
-  width: 100%;
-  border-radius: 12px; /* Matches the input rounding */
-  padding: 16px;
-}
-
-/* Mobile fix so name and email stack on phones */
-@media (max-width: 600px) {
-  .input-group {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-
-/* SOCIAL LINKS - High Visibility White Buttons */
 .socials {
   margin-top: 40px;
   display: flex;
@@ -240,7 +209,7 @@ button:hover {
 }
 
 .socials a {
-  color: white !important; /* Forces text to be white */
+  color: white !important;
   text-decoration: none;
   font-weight: 600;
   padding: 12px 25px;
@@ -252,47 +221,18 @@ button:hover {
 
 .socials a:hover {
   background: #a855f7;
-  border-color: #a855f7;
   transform: translateY(-3px);
 }
 
-/* RESPONSIVE DESIGN */
-@media (max-width: 1024px) {
-  #system .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* --- 7. MOBILE RESPONSIVE (THE FIXES) --- */
 
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 20px;
-  }
-
-  .input-group {
-    flex-direction: column;
-  }
-
-  header {
-    padding: 0 20px;
-  }
-
-  nav {
-    display: none;
-  }
-
-  #system .grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* HAMBURGER STYLES */
+/* Hamburger Button */
 .menu-toggle {
-  display: none; /* Hidden by default (Desktop) */
+  display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
+  z-index: 1100;
 }
 
 .menu-toggle span {
@@ -303,50 +243,37 @@ button:hover {
   transition: 0.3s;
 }
 
-
-/* --- KILL THE RIGHT-SIDE SLIDING (Add this to the very top of your CSS) --- */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  position: relative;
+@media (max-width: 1024px) {
+  #system .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* --- RE-STRUCTURED MOBILE MENU (Replace your existing @media 768px block) --- */
 @media (max-width: 768px) {
   header {
     padding: 0 20px;
-    width: 100%;
-    box-sizing: border-box;
   }
 
-  /* Make the hamburger button visible */
   .menu-toggle {
     display: flex !important;
-    z-index: 1100; /* Ensure it stays above the menu */
-    position: relative;
   }
 
-  /* THE FIX: Remove right: -100% and use display: none */
+  /* FULLSCREEN MENU FIX */
   nav {
-    display: none !important; 
+    display: none !important; /* Hide completely until 'active' */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
-    
     width: 100vw;
     height: 100vh;
-    background: #0f172a; /* Solid background */
+    background: #0f172a;
     z-index: 1050;
     margin: 0;
   }
 
-  /* This class is added by JavaScript when you click the button */
   nav.active {
     display: flex !important;
   }
@@ -355,16 +282,28 @@ html, body {
     margin: 20px 0 !important;
     font-size: 28px !important;
     color: white !important;
+    margin-left: 0; /* Reset desktop margin */
   }
 
-  /* Stack Hero elements on mobile */
   .hero {
     flex-direction: column;
     text-align: center;
     padding: 40px 20px;
   }
 
-  .hero-image img {
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .section {
+    padding: 40px 20px;
+  }
+
+  .grid, #system .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card {
     max-width: 100%;
   }
 
@@ -372,12 +311,7 @@ html, body {
     flex-direction: column;
   }
 
-  /* Force the grids to 1 column */
-  #system .grid, .grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Hamburger to 'X' animation */
+  /* Hamburger to 'X' */
   .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .menu-toggle.active span:nth-child(2) { opacity: 0; }
   .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
