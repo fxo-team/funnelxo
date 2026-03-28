@@ -1,45 +1,60 @@
-// Smooth scroll for ALL links
-document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
+/**
+ * FunnelXo Main Script
+ */
 
-    const target = document.querySelector(this.getAttribute('href'));
+// 1. Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
 
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  });
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
 });
 
-// Button scroll
+// 2. Smooth Scroll function for Buttons (e.g., Hero Button)
 function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({
-    behavior: "smooth"
-  });
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 }
 
+// 3. Mobile Menu Logic
 const menuToggle = document.getElementById('mobile-menu');
 const navMenu = document.getElementById('nav-menu');
+const body = document.body;
 
 menuToggle.addEventListener('click', () => {
-  const isActive = navMenu.classList.toggle('active');
-  menuToggle.classList.toggle('active');
+    // Toggle the 'active' class on both the button and the menu
+    const isActive = navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active');
 
-  if (isActive) {
-    // Prevent the background from moving while menu is open
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'auto';
-  }
+    if (isActive) {
+        // LOCK SCROLL: Prevents the background from moving while menu is open
+        body.style.overflow = 'hidden';
+    } else {
+        // UNLOCK SCROLL: Allows scrolling again when menu is closed
+        body.style.overflow = 'auto';
+    }
 });
 
-// Close menu and restore scroll when a link is clicked
+// 4. Auto-Close Menu when a Link is Clicked
 document.querySelectorAll('#nav-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    menuToggle.classList.remove('active');
-    navMenu.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  });
+    link.addEventListener('click', () => {
+        // Remove active classes
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        
+        // Always restore scrolling when moving to a new section
+        body.style.overflow = 'auto';
+    });
 });
