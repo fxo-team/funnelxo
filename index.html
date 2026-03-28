@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FunnelXo</title>
-   <link rel="icon" type="image/png" href="your-logo-file.png">
+    <link rel="icon" type="image/png" href="your-logo-file.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,13 @@
     <img src="LogoImage.png" alt="FunnelXo Logo">
   </div>
 
-  <nav>
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav id="nav-menu">
     <a href="#home">Home</a>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
@@ -28,7 +34,7 @@
 <!-- HERO -->
 <section id="home" class="hero">
   <div class="hero-text">
-    <h1>Turn Your Social Media Into a Sales Machine</h1>
+    <h1>Turning Conversation Into Customers</h1>
     <p>Your Social Media, Converted. We bridge the gap between 'Liked' and 'Sold.' Complete inbox management and strategic content posting so you never miss a lead again.</p>
     <button onclick="scrollToSection('pricing')">View Plans</button>
   </div>
@@ -210,9 +216,9 @@
 
       <select name="selected_plan" required>
         <option value="" disabled selected>Select a Plan</option>
-        <option value="Starter">Starter Plan </option>
-        <option value="Growth">Growth Plan </option>
-        <option value="Premium">Premium Plan </option>
+        <option value="Starter">Starter Plan ($99)</option>
+        <option value="Growth">Growth Plan ($249)</option>
+        <option value="Premium">Premium Plan ($499)</option>
       </select>
 
       <textarea name="visitor_message" rows="5" placeholder="Tell us about your business..." required></textarea>
@@ -223,7 +229,7 @@
     </form>
   </div>
 
-  <div class="socials">
+ <div class="socials">
     <p>Or reach us via:</p>
     <a href="https://www.facebook.com/share/1KZYnm9wB2/" target="_blank">Facebook</a>
     <a href="https://www.instagram.com/funnel.xo?igsh=M2gzbDByamplMzk0" target="_blank">Instagram</a>
