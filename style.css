@@ -11,19 +11,30 @@ html, body {
   position: relative;
 }
 
-/* --- 2. HEADER & NAVIGATION --- */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 60px;
+  padding: 0 40px;
   height: 80px;
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(10px);
-  position: sticky;
+  background: rgba(15, 23, 42, 0.95); /* Semi-transparent dark blue */
+  backdrop-filter: blur(10px);        /* This gives it that modern glass look */
+  
+  /* THIS PART MAKES IT STICKY */
+  position: fixed; /* Changed from sticky to fixed for better mobile support */
   top: 0;
-  z-index: 1000;
+  left: 0;
+  width: 100%;
+  z-index: 2000; /* High number to stay above EVERYTHING else */
+  
   box-sizing: border-box;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2); /* Subtle line for detail */
+}
+
+/* Because the header is now 'fixed', we need to push the hero section down 
+   so the header doesn't cover your title 'Turning Conversation...' */
+body {
+  padding-top: 80px; 
 }
 
 .logo img {
