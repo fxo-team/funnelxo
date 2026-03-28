@@ -33,16 +33,29 @@ header {
 }
 
 .logo img {
-  height: 50px; 
+
+  height: 60px; /* Scaled down from 160px for better header fit */
+
   width: auto;
-  position: relative; /* Adds an extra layer of visibility insurance */
-  z-index: 10001;
+
+  display: block;
+
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  z-index: 10001;
+
+
+nav a {
+
+  margin-left: 25px;
+
+  text-decoration: none;
+
+  color: #cbd5f5;
+
+  font-weight: 500;
+
+  transition: 0.3s;
+
 }
 
 nav a:hover {
