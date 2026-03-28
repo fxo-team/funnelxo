@@ -33,17 +33,16 @@ header {
 }
 
 .logo img {
-  height: 160px; /* Adjusted for better balance */
+  height: 50px; 
   width: auto;
-  display: block;
+  position: relative; /* Adds an extra layer of visibility insurance */
+  z-index: 10001;
 }
 
-nav a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #cbd5f5;
-  font-weight: 500;
-  transition: 0.3s;
+nav {
+  display: flex;
+  align-items: center;
+  z-index: 10001;
 }
 
 nav a:hover {
