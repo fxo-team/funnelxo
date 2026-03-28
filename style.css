@@ -303,11 +303,19 @@ button:hover {
   transition: 0.3s;
 }
 
-/* MOBILE RESPONSIVE LOGIC - THE BULLETPROOF FIX */
+
+/* This prevents the "Right Side" gap and zoom-out issue */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+/* MOBILE RESPONSIVE LOGIC - THE ACTUAL FIX */
 @media (max-width: 768px) {
-  /* 1. Prevent the whole page from shaking or scrolling sideways */
-  body {
+  /* 1. Force the page to stay within the screen width */
+  html, body {
     overflow-x: hidden;
+    width: 100%;
     position: relative;
   }
 
@@ -324,33 +332,28 @@ button:hover {
     position: relative;
   }
 
-  /* 2. The Nav Overlay */
+  /* 2. The Nav Overlay - FIXED VERSION */
   nav {
-    display: flex !important;
+    display: none !important; /* CRITICAL: This stops the zoom-out issue */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
-    position: fixed !important; 
+    position: fixed; 
     top: 0;
-    right: -100%; /* Hidden off-screen */
+    left: 0; /* Changed to left so it centers correctly when shown */
     
-    width: 100vw !important;
-    height: 100vh !important;
-    background: #0f172a;
-    
-    transition: transform 0.4s ease-in-out, right 0.4s ease-in-out;
-    z-index: 1000 !important;
-    
-    /* CRITICAL: This hides it from the browser "zoom" and "scroll" */
-    visibility: hidden; 
+    width: 100vw;
+    height: 100vh;
+    background: #0f172a; /* Deep midnight blue */
+    z-index: 1000;
     opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
-  /* 3. Reveal the menu */
+  /* 3. Reveal the menu ONLY when active */
   nav.active {
-    right: 0 !important;
-    visibility: visible;
+    display: flex !important; /* Only exists when button is clicked */
     opacity: 1;
   }
 
@@ -359,14 +362,9 @@ button:hover {
     font-size: 28px !important;
     color: white !important;
     text-decoration: none;
-    transition: 0.3s;
   }
 
-  nav a:hover {
-    color: #a855f7;
-  }
-
-  /* Hamburger to 'X' */
+  /* Hamburger to 'X' animation */
   .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .menu-toggle.active span:nth-child(2) { opacity: 0; }
   .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
