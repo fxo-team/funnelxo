@@ -303,43 +303,71 @@ button:hover {
   transition: 0.3s;
 }
 
-/* MOBILE RESPONSIVE LOGIC - FIX */
+/* MOBILE RESPONSIVE LOGIC - THE BULLETPROOF FIX */
 @media (max-width: 768px) {
+  /* 1. Prevent the whole page from shaking or scrolling sideways */
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  header {
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .menu-toggle {
-    display: flex; 
-    z-index: 1001; /* Stay above the menu */
+    display: flex !important;
+    z-index: 1001;
+    position: relative;
   }
 
+  /* 2. The Nav Overlay */
   nav {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    position: fixed; /* Fixes it to the screen, not the page flow */
-    top: 0; 
-    right: -100%; /* Hide completely off-screen */
-    background: #0f172a; /* Solid dark background */
-    width: 100%; /* Take up the whole screen width */
-    height: 100vh; /* Take up the whole screen height */
-    text-align: center;
-    transition: 0.4s ease-in-out;
-    padding-top: 100px; /* Space for the links to start lower */
-    z-index: 1000; /* Sit on top of everything else */
+    justify-content: center;
+    align-items: center;
+    
+    position: fixed !important; 
+    top: 0;
+    right: -100%; /* Hidden off-screen */
+    
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #0f172a;
+    
+    transition: transform 0.4s ease-in-out, right 0.4s ease-in-out;
+    z-index: 1000 !important;
+    
+    /* CRITICAL: This hides it from the browser "zoom" and "scroll" */
+    visibility: hidden; 
+    opacity: 0;
   }
 
-  /* When the menu is active, slide it in from the right */
+  /* 3. Reveal the menu */
   nav.active {
-    right: 0;
+    right: 0 !important;
+    visibility: visible;
+    opacity: 1;
   }
 
   nav a {
-    margin: 20px 0;
-    font-size: 24px;
-    display: block;
-    color: white;
+    margin: 15px 0 !important;
+    font-size: 28px !important;
+    color: white !important;
     text-decoration: none;
+    transition: 0.3s;
   }
-  
-  /* The 3 lines turning into an X */
-  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+
+  nav a:hover {
+    color: #a855f7;
+  }
+
+  /* Hamburger to 'X' */
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .menu-toggle.active span:nth-child(2) { opacity: 0; }
-  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
 }
